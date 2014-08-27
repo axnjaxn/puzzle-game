@@ -1,5 +1,5 @@
+#include "tetris.h"
 #include "view.h"
-#include <SDL/SDL.h>
 
 #define TITLE "Puzzle Game Test by Brian Jackson"
 
@@ -11,8 +11,14 @@ int main(int argc, char* argv[]) {
   }
   atexit(SDL_Quit);
   
+  Tetris game;
+
   SDL_WM_SetCaption(TITLE, NULL);
-  SDL_Surface* screen = SDL_SetVideoMode(400, 1000, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
+  SDL_Surface* screen = SDL_SetVideoMode(game.getGrid().cols() * 16, game.getGrid().rows() * 16,
+					 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
+  
+  PuzzleView view(&game);
+  view.setTarget(screen);
 
   SDL_Event event;
   bool exitflag = 0;

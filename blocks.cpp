@@ -1,4 +1,5 @@
 #include "blocks.h"
+#include <cstring>
 
 Grid::Grid(int nr, int nc) {
   this->nr = nr;
@@ -71,12 +72,14 @@ FallingBlock::FallingBlock() : Block() {
   setPosition(0, 0);
 }
 
-FallingBlock::FallingBlock(const Block& block, int ticks = 1) : Block(block) {
+FallingBlock::FallingBlock(const Block& block, int ticks) : Block(block) {
   setTicks(ticks);
   setPosition(0, 0);
 }
 
-void FallingBlock::getDisplayPosition(const Grid& grid, float& r, float& c) const;
+void FallingBlock::getDisplayPosition(const Grid& grid, float& r, float& c) const {
+  //TODO
+}
 
 void FallingBlock::tick() {
   if (willFall()) {

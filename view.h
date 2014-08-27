@@ -2,6 +2,7 @@
 #define _BPJ_PUZZLE_VIEW_H
 
 #include "game.h"
+#include <SDL/SDL.h>
 
 class PuzzleView {
 private:

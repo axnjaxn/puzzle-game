@@ -8,14 +8,14 @@ APP = $(APPNAME)$(EXT)
 CFLAGS = -g `sdl-config --cflags`
 LFLAGS = -g `sdl-config --libs`
 
-OBJECT_FILES = main.o
+OBJECT_FILES = blocks.o game.o view.o tetris.o main.o
 
 all: $(APP)
 
 rebuild: clean $(APP)
 
 .cpp.o:
-	g++ -c $< $(CFLAGS)o
+	g++ -c $< $(CFLAGS)
 
 $(APP): $(OBJECT_FILES)
 	g++ $(OBJECT_FILES) -o $(APP) $(LFLAGS)

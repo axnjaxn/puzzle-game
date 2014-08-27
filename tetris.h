@@ -5,7 +5,6 @@
 
 class Tetris : public PuzzleGame {
 protected:
-  Block selectBlock();
   void postPlant();
 
 public:
