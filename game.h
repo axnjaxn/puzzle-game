@@ -23,7 +23,7 @@ protected:
 
   unsigned long int score;
 
-  virtual Block selectBlock() = 0;
+  virtual Block selectBlock();
   virtual void postFall() { }
   virtual void postPlant() { }
 

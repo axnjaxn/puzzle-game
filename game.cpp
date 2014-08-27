@@ -8,6 +8,11 @@ PuzzleGame::PuzzleGame() {
   score = 0;
 }
 
+Block PuzzleGame::selectBlock() {
+  //TODO
+  return Block();
+}
+
 //TODO: Cleanup
 void PuzzleGame::update(int dt) {
   clock += dt;
