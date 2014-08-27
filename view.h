@@ -1,7 +1,7 @@
 #ifndef _BPJ_PUZZLE_VIEW_H
 #define _BPJ_PUZZLE_VIEW_H
 
-#include "view.h"
+#include "game.h"
 
 class PuzzleView {
 private:
