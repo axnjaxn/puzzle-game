@@ -50,6 +50,7 @@ public:
   void map(const std::string& cells, const std::string& map, int r, int c);
 
   inline void setPivot(int r, int c) {pr = r; pc = c;}
+  inline void getPivot(int& r, int& c) const {r = pr; c = pc;}
   Block leftRotate() const;
   Block rightRotate() const;
 
