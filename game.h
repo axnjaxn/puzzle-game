@@ -13,6 +13,7 @@ class PuzzleGame {
 protected:
   std::vector<Block> blocks;
   std::queue<Block> blockQueue;
+  int queueSize;
 
   Grid grid;
   FallingBlock fallingBlock;
@@ -23,7 +24,8 @@ protected:
   unsigned long int score;
 
   virtual Block selectBlock() = 0;
-  virtual void postFall() = 0;
+  virtual void postFall() { }
+  virtual void postPlant() { }
 
 public:
   PuzzleGame();
