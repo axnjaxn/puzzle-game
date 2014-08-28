@@ -9,6 +9,16 @@ protected:
 
 public:
   Tetris();
+
+  void left();
+  void right();
+  void fastDrop();
+  void speedUp(bool on);
+  void rotateLeft();
+  void rotateRight();
+  void hold();
+  void pause();
+  void update(int dt);
 };
 
 #endif
