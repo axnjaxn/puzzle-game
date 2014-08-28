@@ -5,6 +5,7 @@ Grid::Grid(int nr, int nc) {
   this->nr = nr;
   this->nc = nc;
   cells = new Cell [nr * nc];
+  memset(cells, 0, nr * nc * sizeof(Cell));
 }
 
 Grid::Grid(const Grid& grid) {
@@ -20,6 +21,8 @@ Grid& Grid::operator=(const Grid& grid) {
   if (cells) delete [] cells;
   nr = grid.nr;
   nc = grid.nc;
+  cells = new Cell [nr * nc];
+  memcpy(cells, grid.cells, nr * nc * sizeof(Cell));
   return *this;
 }
 
