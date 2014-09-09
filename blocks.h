@@ -18,7 +18,7 @@ typedef unsigned char Cell;
 class Grid {
 private:
   Cell* cells;
-  int nr, nc;
+  int nr, nc;//Dimensions of grid
   
 public:
   Grid(int nr = 1, int nc = 1);
@@ -40,14 +40,14 @@ public:
  * Also adds collision and bounding routines.
  */
 class Block : public Grid {
-private:
-  int pr, pc;
+protected:
+  int pr, pc;//Pivot row and column
 
 public:
   Block(int nr = 1, int nc = 1);
   Block(const Grid& grid);
   
-  void map(const std::string& cells, const std::string& map, int r, int c);
+  const Block& map(const std::string& cells, const std::string& map, int r, int c);
 
   inline void setPivot(int r, int c) {pr = r; pc = c;}
   inline void getPivot(int& r, int& c) const {r = pr; c = pc;}
@@ -65,8 +65,8 @@ public:
  * A game loop can call tick a certain number of times per frame and adjust accordingly.
  */
 class FallingBlock : public Block {
-private:
-  int ticks, currentTicks, r, c;
+protected:
+  int ticks, currentTicks, r, c;//Position of pivot with respect to grid
   
 public:
   FallingBlock();

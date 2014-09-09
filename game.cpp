@@ -9,7 +9,7 @@ PuzzleGame::PuzzleGame() {
 }
 
 Block PuzzleGame::selectBlock() {
-  //TODO
+  //TODO: Choose a block uniformly and return it
   return Block();
 }
 

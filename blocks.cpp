@@ -32,7 +32,7 @@ Block::Block(int nr, int nc) : Grid(nr, nc) {
 
 Block::Block(const Grid& grid) : Grid(grid) { }
   
-void Block::map(const std::string& cells, const std::string& map, int r, int c) {
+const Block& Block::map(const std::string& cells, const std::string& map, int r, int c) {
   setPivot(r, c);
 
   char charMap[256];
@@ -43,20 +43,28 @@ void Block::map(const std::string& cells, const std::string& map, int r, int c) 
   for (int r = 0; r < rows(); r++)
     for (int c = 0; c < cols(); c++)
       set(r, c, charMap[cells[r * cols() + c]]);
+
+  return *this;
 }
 
 Block Block::leftRotate() const {
-  //TODO
+  Block rotated(nc, nr);
+  for (int r = 0; r < rotated.rows(); r++)
+    for (int c = 0; c < rotated.cols(); c++)
+      rotated.set(r, c, at(cols() - c - 1, r));
   return *this;
 }
 
 Block Block::rightRotate() const {
-  //TODO
+  Block rotated(nc, nr);
+  for (int r = 0; r < rotated.rows(); r++)
+    for (int c = 0; c < rotated.cols(); c++)
+      rotated.set(rotated.cols() - c - 1, r, at(r, c));
   return *this;
 }
 
 bool Block::inBounds(const Grid& grid, int r, int c) const {
-  //TODO
+  //TODO: Work out bounding logic, assuming tight bounds
   return 0;
 }
 
@@ -81,7 +89,9 @@ FallingBlock::FallingBlock(const Block& block, int ticks) : Block(block) {
 }
 
 void FallingBlock::getDisplayPosition(const Grid& grid, float& r, float& c) const {
-  //TODO
+  //TODO: Finish this logic
+  r = this->r;
+  c = this->c;
 }
 
 void FallingBlock::tick() {
@@ -94,10 +104,12 @@ void FallingBlock::tick() {
 }
 
 bool FallingBlock::landed(const Grid& grid) const {
-  //TODO
-  return 0;
+  return collides(grid, r + 1, c);
 }
 
 void FallingBlock::plant(Grid& grid) const {
-  //TODO
+  for (int r1 = 0; r1 < rows(); r1++)
+    for (int c1 = 0; c1 < cols(); c1++)
+      if (at(r1, c1))
+	grid.set(r - pr, c - pc, at(r1, c1));
 }

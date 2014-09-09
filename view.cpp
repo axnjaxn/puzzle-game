@@ -53,5 +53,5 @@ void PuzzleView::repaint() {
       }
   }
   
-  //TODO
+  //TODO: Better rendering
 }
